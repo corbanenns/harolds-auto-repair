@@ -161,6 +161,38 @@ Add to Tier 1 or Tier 2 of the roadmap above:
 5. **Service-interval content.** A 30/60/90k page per common make (Subaru, Toyota, Honda, Ford, GM) with a Book Online button. This feeds the reminder texts and ranks for "Subaru 60k service West Salem".
 
 
+---
+
+## 7. Retention and CRM program (on Mitchell 1)
+
+Incorporates the owner's earlier research on running modern workflows without leaving Manager SE. Corrections and compliance flags are called out inline.
+
+### Stack map
+| Capability | Native Mitchell 1 | Third-party that integrates with Manager SE |
+|---|---|---|
+| Two-way texting, status updates | MessageCenter (templates from WIP, Order, Revision, Appointment, MPI screens) | Steer / MechanicAdvisor |
+| Digital vehicle inspection | **OneFlow / Manager SE Inspections** (Sept 2025). Note: the older tablet DVI, Mobile Manager Pro, is a Bolt On Technology product, not Mitchell 1's own; it still works with Manager SE but OneFlow is the forward path | AutoVitals, Bolt On Mobile Manager Pro |
+| Reminders, campaigns, reviews | SocialCRM (service reminders, text/email campaigns, postcards, review engine via SureCritic) | Kukui (local data connector pulls RO data) |
+| Fleet accounts | Manager SE fleet features (fleet integration enhancements shipped by Mitchell 1) | — |
+
+### Programs, in priority order
+1. **Deferred-work re-engagement.** Deferred items from OneFlow sit on the vehicle record. Configure SocialCRM (or Kukui/AutoVitals) to text at 60 and 90 days with the original inspection link and a Book It Now slot. Sample copy is in the owner's research; keep it under 160 characters and lead with the measurement ("rear pads at 4mm").
+2. **Three status texts per visit** from MessageCenter templates: checked in, inspection ready, ready for pickup with the 360 Payments link. Make it a service-writer checklist item, since Manager SE does not fire these automatically. The 7:30 AM "we got your keys from the drop box" text is a fourth template sent at morning check-in; it cannot be automated by the drop box itself.
+3. **Post-service review request.** SocialCRM sends a thank-you text with a review link after the RO closes. **Do not gate reviews.** The proposed "4 to 5 stars goes to Google, 3 or lower goes to a private form" flow is review gating. Google's policy forbids selectively soliciting positive reviews and can remove the shop's entire review history for it; the FTC Consumer Reviews rule (effective Oct 2024) carries civil penalties of up to about $51,000 per violation for suppressing negative reviews. Compliant version: every customer gets the same public review link, with a separate, always-visible "Talk to the manager directly" option on the site and in the text. SureCritic (inside SocialCRM) publishes all reviews, which is the point.
+4. **Maintenance club.** Yearly membership (for example $149: 2 synthetic oil changes, 2 rotations, 2 digital inspections, 10% off repairs up to $100). Manager SE tracks it with a package item and a customer discount code; there is no native membership module, so keep the rules simple enough for a service writer to apply by hand. Run the math on synthetic oil cost before pricing it; at today's prices two synthetic changes alone can approach the fee.
+5. **Lapsed-customer win-back.** SocialCRM filters customers with no visit in 9 to 12 months and sends the "we miss your [Year Make Model]" text with a free safety inspection offer.
+6. **Seasonal trip-check promos.** Spring "Coast & Mountain Road-Trip Inspection", late-fall "Winter Readiness Check". Each gets a landing page and a Book It Now service.
+7. **New-mover direct mail.** SocialCRM postcards or a list vendor, 3 to 5 mile radius, $25 off first visit. Pair with a matching Google Ads geo campaign.
+8. **Fleet outreach.** West Salem trades (plumbers, electricians, landscapers): priority morning turnaround, digital inspection logs per vehicle, monthly invoicing through Manager SE fleet accounts.
+
+### Website pages this adds
+- `/maintenance-club` with online signup (name, mobile, vehicle) feeding the CRM.
+- `/fleet` with a fleet quote form and the inspection-log pitch.
+- `/specials` with the current seasonal check and the first-visit voucher.
+- `/review` with one public review link and a manager-contact form side by side (never gated).
+- The SMS voucher form from section 6, with the consent language described there.
+
+
 ## Sources
 - Mitchell 1 Book It Now press release: https://mitchell1.com/press/socialcrm-book-it-now-new-shop-marketing-services/
 - Book It Now May 2026 enhancements (Snap-on): https://www.snapon.com/Snap-on-Files/News-Business-Units/News-Tools/2026/Mitchell-1-Enhances-SocialCRM-Book-it-Now-with-New-Scheduling-and-Appointment-Recovery-Features.pdf
@@ -177,4 +209,6 @@ Add to Tier 1 or Tier 2 of the roadmap above:
 - OneFlow Inspections deferred work: https://autosphere.ca/mechanical/2025/09/09/mitchell-1-launches-manager-se-inspections-feature/
 - Tekmetric vs Mitchell 1 (vendor page, pricing and migration claims): https://www.tekmetric.com/comparisons/tekmetric-vs-mitchell
 - AutoVitals partner integrations: https://www.autovitals.com/partner-integration/
+- Google / FTC review gating rules: https://www.socialpilot.co/reviews/blogs/review-gating
+- Bolt On Mobile Manager Pro for Manager SE: https://www.underhoodservice.com/mitchell-1-introduces-mobile-managerpro/
 - Current live site (WhirLocal redirect): https://whirlocal.io/company/harolds-quality-auto-repair-inc/
