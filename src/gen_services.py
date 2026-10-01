@@ -115,7 +115,7 @@ S = [
 TXT = {
  "en": dict(services="Services", what="What we do", all="All makes and models, import and domestic. Every job backed by our 1 year / 12,000 mile warranty.",
    dvi_h="Included: digital inspection", dvi_p='Your technician photographs anything worn and texts you the report. You approve each item from your phone. <a href="/inspections">See how it works</a>.',
-   txt_h="Text updates, pay by phone", txt_p='We text when the car is checked in, when the report is ready and when it\'s done, with a secure pay link. <a href="/pay">After-hours pickup</a> available.',
+   txt_h="Text updates, pay by phone", txt_p='We text when the car is checked in, when the report is ready and when it\'s done, with a secure pay link. Pay before you arrive and <a href="/pay">skip the line at the counter</a>.',
    faq="Common questions", book="Book", call="Call", p="",
    ov_title="Auto Repair Services in West Salem | Harold's Quality Auto Repair", ov_desc="Full-service auto repair in West Salem: oil changes, brakes, tires and alignment, check engine diagnostics, engine and transmission, A/C, custom exhaust and fleet service. All makes and models.",
    ov_eyebrow="Services", ov_h1="Everything your vehicle needs, under one roof.", ov_lead="Import and domestic cars, light trucks, SUVs and fleet vehicles. 11 bays, ASE Master Certified technicians, and a digital inspection with every visit.",
@@ -124,7 +124,7 @@ TXT = {
    unsure_h="Not sure what you need?", unsure_p="Describe the symptom and we'll start with a diagnosis. You'll get the cause, the evidence and a written estimate before anything is repaired.", unsure_btn="Book a diagnostic"),
  "es": dict(services="Servicios", what="Lo que hacemos", all="Todas las marcas y modelos, importados y americanos. Cada trabajo respaldado por nuestra garantía de 1 año / 12,000 millas.",
    dvi_h="Incluido: inspección digital", dvi_p='Su técnico fotografía cualquier desgaste y le envía el reporte por texto. Usted aprueba cada punto desde su teléfono. <a href="/es/inspections">Vea cómo funciona</a>.',
-   txt_h="Avisos por texto, pago desde el teléfono", txt_p='Le enviamos un texto cuando recibimos el auto, cuando el reporte está listo y cuando terminamos, con un enlace de pago seguro. <a href="/es/pay">Recogida fuera de horario</a> disponible.',
+   txt_h="Avisos por texto, pago desde el teléfono", txt_p='Le enviamos un texto cuando recibimos el auto, cuando el reporte está listo y cuando terminamos, con un enlace de pago seguro. Pague antes de llegar y <a href="/es/pay">evite la fila en el mostrador</a>.',
    faq="Preguntas frecuentes", book="Reservar", call="Llamar", p="/es",
    ov_title="Servicios de taller mecánico en West Salem | Harold's Quality Auto Repair", ov_desc="Taller mecánico completo en West Salem: cambios de aceite, frenos, llantas y alineación, diagnóstico de check engine, motor y transmisión, aire acondicionado, escape a medida y flotillas. Todas las marcas.",
    ov_eyebrow="Servicios", ov_h1="Todo lo que su vehículo necesita, bajo un mismo techo.", ov_lead="Autos importados y americanos, camionetas, SUV y vehículos de flotilla. 11 bahías, técnicos con certificación ASE Master y una inspección digital en cada visita.",

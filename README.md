@@ -11,7 +11,7 @@ See `docs/website-roadmap.md` for the strategy behind the site and the Mitchell 
 | `/` | Home: "See what we see" DVI pitch, services, text-update convenience, reviews, club + first-visit offer, about, visit |
 | `/book` | Booking. Shows the live scheduler when configured, otherwise a diagnostics-first appointment request form |
 | `/inspections` | How digital inspections work, sample report, FAQ |
-| `/pay` | Pay-by-text explainer, after-hours pickup, financing, warranty |
+| `/pay` | Pay-by-text explainer, financing, warranty |
 | `/maintenance-club` | Annual membership offer + signup form |
 | `/specials` | First-visit coupon by SMS (with consent language), seasonal checks |
 | `/fleet` | Fleet accounts + quote form |

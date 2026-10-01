@@ -4,12 +4,12 @@
 
 - Address: 675 Bartell Dr NW, Salem, OR 97304 (West Salem)
 - Phone / text: (503) 365-9702
-- Hours: Monday–Friday 7:00 AM–5:00 PM; closed Saturday and Sunday; 24-hour key drop
+- Hours: Monday–Friday 7:00 AM–5:00 PM; closed Saturday and Sunday. Drop-off and pickup during business hours only.
 - Website: https://www.haroldsautorepair.com (Spanish: https://www.haroldsautorepair.com/es)
 - Facility: 8,000 sq ft, 11 bays, 9 lifts, alignment rack, in-house exhaust bending and welding
 
 ## How a visit works
-Every visit includes a digital multi-point inspection. The technician photographs worn parts and texts the customer a report with measurements (brake pad mm, tire tread depth, battery voltage) rated green / yellow / red. The customer approves or declines each item from their phone; no work starts without approval. Customers get a text when the vehicle is ready with a secure pay link, and can pick up after hours. There is no courtesy shuttle or loaner car.
+Every visit includes a digital multi-point inspection. The technician photographs worn parts and texts the customer a report with measurements (brake pad mm, tire tread depth, battery voltage) rated green / yellow / red. The customer approves or declines each item from their phone; no work starts without approval. Customers get a text when the vehicle is ready with a secure pay link, so they can pay before arriving and collect keys at the counter. There is no key drop, after-hours pickup, courtesy shuttle or loaner car.
 
 ## Services
 - Oil change and factory scheduled maintenance (30/60/90k): /services/oil-change-maintenance
@@ -20,7 +20,7 @@ Every visit includes a digital multi-point inspection. The technician photograph
 - A/C and heating (R-134a and R-1234yf): /services/ac-heating
 - Custom exhaust and muffler repair, bent and welded in-house: /services/exhaust
 - Fleet accounts (priority turnaround, inspection logs, monthly invoicing): /fleet
-- Corporate accounts, Employee Car Care Program, after-hours drop-off and pickup: /corporate
+- Corporate accounts, Employee Car Care Program, priority scheduling with text approvals: /corporate
 All makes and models, import and domestic, light trucks, SUVs, diesel pickups, hybrids.
 
 ## Programs
@@ -30,5 +30,5 @@ All makes and models, import and domestic, light trucks, SUVs, diesel pickups, h
 
 ## Booking and payment
 - Book online: /book
-- Pay invoice by text link, after-hours pickup: /pay
+- Pay invoice by text link: /pay
 - Digital inspections explained: /inspections
