@@ -1,6 +1,6 @@
 # Harold's Quality Auto Repair – Website
 
-Static, multi-page site for Harold's Quality Auto Repair Inc, West Salem, Oregon. Built to pair with Mitchell 1 Manager SE add-ons (online booking, digital inspections, text-to-pay, SocialCRM). No framework, no build step on Vercel.
+Static, bilingual (English / Spanish) multi-page site for Harold's Quality Auto Repair Inc, West Salem, Oregon, at **www.haroldsautorepair.com**. Built to pair with Mitchell 1 Manager SE add-ons (online booking, digital inspections, text-to-pay, SocialCRM). No framework, no build step on Vercel.
 
 See `docs/website-roadmap.md` for the strategy behind the site and the Mitchell 1 integration research.
 
@@ -15,12 +15,14 @@ See `docs/website-roadmap.md` for the strategy behind the site and the Mitchell 
 | `/maintenance-club` | Annual membership offer + signup form |
 | `/specials` | First-visit coupon by SMS (with consent language), seasonal checks |
 | `/fleet` | Fleet accounts + quote form |
+| `/corporate` | Corporate vehicle accounts, Employee Car Care Program, pickup & delivery + inquiry form |
 | `/review` | One public review link for everyone + direct-to-manager form (not gated) |
 | `/about` | History, facility, warranty (`#warranty`), financing (`#financing`) |
 | `/contact` | Address, hours, map, message form |
 | `/privacy` | Privacy policy and SMS program terms (required for 10DLC registration) |
 | `/services` | Overview |
 | `/services/*` | Oil change, brakes, tires-alignment, diagnostics, engine-transmission, ac-heating, exhaust, marine |
+| `/es/...` | Spanish version of every page above, same slugs (`/es/book`, `/es/services/brakes`, …) |
 
 ## Connecting Mitchell 1 and other services
 
@@ -44,26 +46,31 @@ Form payloads look like `{"form":"appointment-request","name":...,"phone":...,"v
 
 ## Editing pages
 
-Sources are in `src/pages/` (one file per page, wrapped by `src/layout.html` which holds the header, footer and mobile action bar). After editing, run:
+English sources are in `src/pages/`, Spanish in `src/pages/es/`. Each is wrapped by `src/layout.html` (header, footer, top bar, mobile action bar), whose labels come from the `STRINGS` table in `build.py` for each language. After editing, run:
 
 ```bash
+python3 src/gen_services.py   # only if you changed service copy (data lives in that file, both languages)
 python3 build.py
 ```
 
-This rewrites the HTML files in the repo root and `services/`, plus `sitemap.xml` and `robots.txt`. Commit the generated files; Vercel serves them as-is (`vercel.json` enables clean URLs so `/book` serves `book.html`).
+This rewrites the HTML in the repo root, `services/`, `es/` and `es/services/`, plus `sitemap.xml` and `robots.txt`. Commit the generated files; Vercel serves them as-is (`vercel.json` enables clean URLs so `/book` serves `book.html`). Every page carries `hreflang` links to its counterpart, and the language switch sits in the top bar and the mobile menu.
 
 Each page source starts with a JSON comment holding its `title`, `description`, `path` and optional `jsonld` structured data.
 
+## Photos
+
+`assets/img/` holds licensed stock placeholders (sources in `assets/img/SOURCES.md`). Replace them with real photos of the shop using the same filenames and nothing else needs to change. Keep them around 1600px wide and under 250 KB.
+
 ## Still to do before launch
 
-- Replace the stock-free hero and about sections with real photos of the shop, bays and team (`assets/img/`).
+- Replace the stock placeholder photos with real photos of the shop, bays and team (see `assets/img/SOURCES.md`).
 - Confirm hours, the "new ownership in 2026" line on `/` and `/about`, Maintenance Club pricing and the first-visit offer amount.
-- Point `haroldsqualityautorepair.com` at Vercel (it currently redirects to the WhirLocal profile).
+- `www.haroldsautorepair.com` is on Vercel. Also redirect the old `haroldsqualityautorepair.com` (currently a WhirLocal profile) to it, and set the apex `haroldsautorepair.com` to redirect to `www`.
 - Get the Google Business Profile "Book" button enabled through Book It Now so Maps users can schedule without visiting the site.
 - Register the texting number for 10DLC through the texting vendor, using `/privacy` as the program terms page.
 
 ## Deploy to Vercel
 
 1. Import this repo at vercel.com → Add New → Project. Framework preset: Other. No build command, output directory `.`.
-2. Add the custom domain under Project → Settings → Domains and update DNS at the registrar.
+2. Under Project → Settings → Domains confirm `www.haroldsautorepair.com` is the primary domain and `haroldsautorepair.com` redirects to it.
 3. Every push to `main` redeploys.

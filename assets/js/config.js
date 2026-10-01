@@ -21,6 +21,13 @@ window.HAROLDS = {
     ["Saturday", "Closed"],
     ["Sunday", "Closed"]
   ],
+  hours_es: [
+    ["Lunes – Viernes", "7:00 AM – 5:00 PM"],
+    ["Sábado", "Cerrado"],
+    ["Domingo", "Cerrado"]
+  ],
+  // Weekday open/close used for the "Open today" line in the top bar (24h, Mon–Fri)
+  weekdayOpen: 7, weekdayClose: 17,
 
   // Texting. Replace smsNumber with the 10DLC-registered number issued by
   // SocialCRM (or whichever platform sends marketing texts). Until then it

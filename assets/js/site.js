@@ -1,6 +1,24 @@
 /* Harold's Quality Auto Repair – shared behaviour. Reads window.HAROLDS (config.js). */
 (function () {
   var C = window.HAROLDS || {};
+  var LANG = (document.documentElement.lang || "en").slice(0, 2);
+  var ES = LANG === "es";
+  var PFX = ES ? "/es" : "";
+  var T = ES ? {
+    forms_off: "Los formularios en línea aún no están conectados. Llámenos o envíe un texto al ",
+    forms_off2: " y con gusto le atendemos.",
+    sending: "Enviando…", sent: "¡Gracias! Nos comunicaremos con usted en breve.",
+    failed: "Algo salió mal al enviar. Por favor llame o envíe un texto al ",
+    open_sched: "Abrir el programador en línea", on_google: " en Google", reviews: " reseñas",
+    open_today: "Abierto hoy ", closed_today: "Cerrado hoy", until: "hasta las ", opens: "Abre el lunes 7:00 AM"
+  } : {
+    forms_off: "Online forms aren't connected yet. Call or text us at ",
+    forms_off2: " and we'll take care of you.",
+    sending: "Sending…", sent: "Thanks! We'll get back to you shortly.",
+    failed: "Something went wrong sending that. Please call or text ",
+    open_sched: "Open the online scheduler", on_google: " on Google", reviews: " reviews",
+    open_today: "Open today ", closed_today: "Closed today", until: "until ", opens: "Opens Monday 7:00 AM"
+  };
   var telHref = "tel:" + (C.phone || "");
   var smsHref = "sms:" + (C.smsNumber || C.phone || "");
   var smsOfferHref = smsHref + "?&body=" + encodeURIComponent(C.smsKeyword || "SAVE");
@@ -21,8 +39,15 @@
   $all("[data-address]").forEach(function (el) {
     el.innerHTML = (C.address1 || "") + "<br>" + (C.city || "") + ", " + (C.state || "") + " " + (C.zip || "");
   });
+  $all("[data-address-inline]").forEach(function (el) { el.textContent = (C.address1 || "") + ", " + (C.city || "") + ", " + (C.state || ""); });
+  $all("[data-hours-today]").forEach(function (el) {
+    var d = new Date(), day = d.getDay(), h = d.getHours();
+    var fmt = function (n) { return (n > 12 ? n - 12 : n) + ":00 " + (n >= 12 ? "PM" : "AM"); };
+    if (day >= 1 && day <= 5) el.textContent = (h < (C.weekdayClose || 17)) ? T.open_today + T.until + fmt(C.weekdayClose || 17) : T.closed_today;
+    else el.textContent = T.closed_today + " · " + T.opens;
+  });
   $all("[data-hours]").forEach(function (el) {
-    el.innerHTML = (C.hours || []).map(function (h) { return "<tr><td>" + h[0] + "</td><td>" + h[1] + "</td></tr>"; }).join("");
+    el.innerHTML = ((ES && C.hours_es) || C.hours || []).map(function (h) { return "<tr><td>" + h[0] + "</td><td>" + h[1] + "</td></tr>"; }).join("");
   });
   $all("[data-map]").forEach(function (el) {
     if (C.mapEmbed) el.innerHTML = '<iframe src="' + C.mapEmbed + '" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Map to Harold\'s Quality Auto Repair"></iframe>';
@@ -31,14 +56,14 @@
   /* ---- Booking: live scheduler when configured, request form otherwise ---- */
   $all("[data-book]").forEach(function (el) {
     if (C.bookingUrl) { el.setAttribute("href", C.bookingUrl); el.setAttribute("target", "_blank"); el.setAttribute("rel", "noopener"); }
-    else { el.setAttribute("href", el.getAttribute("data-book") || "/book"); }
+    else { el.setAttribute("href", PFX + (el.getAttribute("data-book") || "/book")); }
   });
   var embedHost = document.getElementById("booking-embed");
   var requestForm = document.getElementById("booking-request");
   if (embedHost && requestForm) {
     if (C.bookingEmbed) { embedHost.innerHTML = C.bookingEmbed; embedHost.classList.remove("hidden"); requestForm.classList.add("hidden"); }
     else if (C.bookingUrl) {
-      embedHost.innerHTML = '<a class="btn btn-primary btn-lg" href="' + C.bookingUrl + '" target="_blank" rel="noopener">Open the online scheduler</a>';
+      embedHost.innerHTML = '<a class="btn btn-primary btn-lg" href="' + C.bookingUrl + '" target="_blank" rel="noopener">' + T.open_sched + '</a>';
       embedHost.classList.remove("hidden");
     }
   }
@@ -56,8 +81,8 @@
   $all("[data-review-missing]").forEach(function (el) { if (C.reviewUrl) el.classList.add("hidden"); });
   $all("[data-rating]").forEach(function (el) {
     if (C.googleRating) {
-      el.innerHTML = '<span class="stars" aria-hidden="true">★★★★★</span> <strong>' + C.googleRating + '</strong> on Google' +
-        (C.googleReviewCount ? ' <span class="muted">(' + C.googleReviewCount + ' reviews)</span>' : "");
+      el.innerHTML = '<span class="stars" aria-hidden="true">★★★★★</span> <strong>' + C.googleRating + '</strong>' + T.on_google +
+        (C.googleReviewCount ? ' <span class="muted">(' + C.googleReviewCount + T.reviews + ')</span>' : "");
     } else { el.classList.add("hidden"); }
   });
 
@@ -68,15 +93,15 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var data = {}; new FormData(form).forEach(function (v, k) { data[k] = v; });
-      data.form = form.getAttribute("data-form"); data.page = location.pathname; data.submitted_at = new Date().toISOString();
+      data.form = form.getAttribute("data-form"); data.page = location.pathname; data.lang = LANG; data.submitted_at = new Date().toISOString();
       if (!C.formEndpoint) {
-        show("warn", "Online forms aren't connected yet. Call or text us at <a " + 'href="' + telHref + '">' + (C.phoneDisplay || "") + "</a> and we'll take care of you.");
+        show("warn", T.forms_off + "<a " + 'href="' + telHref + '">' + (C.phoneDisplay || "") + "</a>" + T.forms_off2);
         return;
       }
-      var btn = form.querySelector("[type=submit]"); if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = "Sending…"; }
+      var btn = form.querySelector("[type=submit]"); if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = T.sending; }
       fetch(C.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); show("ok", form.getAttribute("data-success") || "Thanks! We'll get back to you shortly."); })
-        .catch(function () { show("warn", "Something went wrong sending that. Please call or text <a " + 'href="' + telHref + '">' + (C.phoneDisplay || "") + "</a>."); })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); show("ok", form.getAttribute("data-success") || T.sent); })
+        .catch(function () { show("warn", T.failed + "<a " + 'href="' + telHref + '">' + (C.phoneDisplay || "") + "</a>."); })
         .then(function () { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; } });
     });
   });
@@ -87,10 +112,18 @@
     toggle.addEventListener("click", function () { var open = nav.classList.toggle("open"); toggle.setAttribute("aria-expanded", open ? "true" : "false"); });
   }
   var path = location.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
-  $all(".nav a").forEach(function (a) {
+  $all(".nav a:not(.nav-lang)").forEach(function (a) {
     var href = a.getAttribute("href"); if (!href || href.charAt(0) !== "/") return;
-    if (href === path || (href !== "/" && path.indexOf(href) === 0)) a.setAttribute("aria-current", "page");
+    if (href === path || (href !== "/" && href !== "/es" && path.indexOf(href) === 0)) a.setAttribute("aria-current", "page");
   });
+  /* Header shrink on scroll */
+  var hdr = document.querySelector(".site-header");
+  window.addEventListener("scroll", function () { if (hdr) hdr.classList.toggle("scrolled", window.scrollY > 40); }, { passive: true });
+  /* Reveal on scroll */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    $all(".reveal").forEach(function (el) { io.observe(el); });
+  } else { $all(".reveal").forEach(function (el) { el.classList.add("in"); }); }
 
   /* ---- Prefill service from ?service= on the booking page ---- */
   var svc = new URLSearchParams(location.search).get("service");

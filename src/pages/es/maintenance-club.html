@@ -1,0 +1,62 @@
+<!-- {"title": "Club de mantenimiento | Harold's Quality Auto Repair, West Salem", "description": "Club de mantenimiento Harold's: dos cambios de aceite sintético, dos rotaciones, dos inspecciones digitales y 10% de descuento en reparaciones por un solo precio anual.", "path": "/es/maintenance-club"} -->
+<section class="page-hero has-photo">
+  <div class="bg" style="background-image:url(/assets/img/oil-change.jpg)" role="img" aria-label="Técnico vertiendo aceite nuevo"></div>
+  <div class="container">
+    <p class="eyebrow">Club de mantenimiento Harold's</p>
+    <h1>Un año de mantenimiento. Un precio. Nada que recordar.</h1>
+    <p class="lead">Para quien prefiere no pensar en cambios de aceite. Nosotros llevamos su calendario, le avisamos por texto cuando toca, y usted ya pagó.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="price-card">
+      <p class="eyebrow">Membresía anual</p>
+      <div class="price">$149 <small>/ año por vehículo</small></div>
+      <ul class="checks" style="margin-top:1.2rem">
+        <li>2 cambios de aceite sintético y filtro (hasta 5 cuartos; motores grandes y aceites especiales un poco más)</li>
+        <li>2 rotaciones de llantas</li>
+        <li>2 inspecciones digitales multipunto con fotos</li>
+        <li>10% de descuento en reparaciones mecánicas, hasta $100 por visita</li>
+        <li>Relleno de fluidos entre visitas</li>
+        <li>Recordatorios de servicio por texto</li>
+        <li>Prioridad en citas para miembros</li>
+      </ul>
+      <a class="btn btn-primary btn-lg" href="#join">Unirme al club</a>
+      <p class="small muted" style="margin:.8rem 0 0">Precio introductorio. La membresía es por vehículo, válida 12 meses desde la compra, no transferible. Términos completos en el mostrador.</p>
+    </div>
+    <div>
+      <h2>¿Por qué un club?</h2>
+      <p>La mayoría de los autos necesitan dos cambios de aceite al año, y casi todos vamos unos meses tarde en al menos uno. El club elimina la adivinanza: paga una vez, nosotros llevamos el calendario y le avisamos por texto cuando toca, y cada visita incluye la inspección que detecta los problemas pequeños antes de que terminen en grúa.</p>
+      <p>También significa que nunca más andará comparando precios de cambio de aceite al otro lado del río. Ya tiene un taller, y ese taller conoce su auto.</p>
+      <h3 style="margin-top:1.5rem">Le conviene si…</h3>
+      <ul class="checks">
+        <li>Maneja entre 8,000 y 15,000 millas al año</li>
+        <li>Quiere un solo lugar que conozca el historial de su vehículo</li>
+        <li>Tiene un hijo que empieza a manejar o un segundo auto que se olvida</li>
+        <li>Tiene un negocio pequeño con uno o dos vehículos (pregunte por <a href="/es/fleet">precios de flotilla</a> si son más)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="join">
+  <div class="container" style="max-width:720px">
+    <h2>Únase al club de mantenimiento</h2>
+    <p class="muted">Llene esto y le enviamos un texto para configurar el pago y su primera visita. O simplemente menciónelo en su próxima cita.</p>
+    <form class="form" data-form="maintenance-club" data-success="¡Ya está en la lista! Le enviaremos un texto en breve para configurar su membresía y reservar su primera visita.">
+      <div class="row">
+        <div><label for="m-name">Su nombre</label><input id="m-name" name="name" required autocomplete="name"></div>
+        <div><label for="m-phone">Número de celular</label><input id="m-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel"></div>
+      </div>
+      <div><label for="m-email">Correo electrónico</label><input id="m-email" name="email" type="email" autocomplete="email"></div>
+      <div class="row">
+        <div><label for="m-vehicle">Vehículo (año, marca, modelo)</label><input id="m-vehicle" name="vehicle" placeholder="Honda CR-V 2016" required></div>
+        <div><label for="m-miles">Millas por año <span class="muted">(aprox.)</span></label><input id="m-miles" name="miles_per_year" inputmode="numeric" placeholder="12,000"></div>
+      </div>
+      <label class="consent"><input type="checkbox" name="sms_consent" value="yes" required> <span>Acepto recibir textos de Harold's sobre mi membresía y recordatorios de servicio. Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar. <a href="/es/privacy">Privacidad y términos de SMS</a>.</span></label>
+      <div data-status class="notice hidden" role="status"></div>
+      <button class="btn btn-primary btn-lg" type="submit">Inscribirme</button>
+    </form>
+  </div>
+</section>

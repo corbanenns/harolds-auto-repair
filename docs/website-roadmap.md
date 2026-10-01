@@ -26,7 +26,7 @@ The repo is a single static `index.html` (about 1,000 lines, inline CSS and JS) 
 | Services | Only 6 generic cards. Public listings say the shop also does tires, alignment, custom exhaust, fleet and marine. None of that is on the site. "R-12" A/C is a 1990s reference. |
 | "29+ years" | Hardcoded. Will be wrong next year. |
 | SEO | Title and copy say "Salem". The shop is in West Salem and that phrase is what neighbours search. No `schema.org/AutoRepair` structured data. |
-| Domain | `haroldsqualityautorepair.com` currently 301-redirects to a WhirLocal directory profile (33 reviews, 4.2★). The new site needs to take the domain back. |
+| Domain | New site launches on `www.haroldsautorepair.com` (purchased, on Vercel). The old `haroldsqualityautorepair.com` currently 301-redirects to a WhirLocal directory profile (33 reviews, 4.2★) and should be pointed at the new site. |
 | Financing / warranty | 1yr/12k warranty is mentioned in passing. No financing info at all, which matters for $1,500+ repairs. |
 
 ---

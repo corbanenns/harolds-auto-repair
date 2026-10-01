@@ -1,0 +1,78 @@
+<!-- {"title": "Corporate Accounts & Employee Car Care Program | Harold's, West Salem", "description": "Corporate vehicle accounts, an employee car-care benefit program for West Salem employers, and pickup and delivery for business vehicles. Harold's Quality Auto Repair.", "path": "/corporate"} -->
+<section class="page-hero has-photo">
+  <div class="bg" style="background-image:url(/assets/img/parts-counter.jpg)" role="img" aria-label="Technician at the parts counter"></div>
+  <div class="container">
+    <p class="eyebrow">Corporate programs</p>
+    <h1>Car care as a company benefit.</h1>
+    <p class="lead">Three programs for West Salem employers: corporate vehicle accounts, an employee car-care program that costs the company nothing, and pickup and delivery so nobody loses a workday to a repair.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-3">
+    <div class="card lift">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg></div>
+      <h3>Corporate vehicle accounts</h3>
+      <p>Company cars, executive vehicles, pool cars and sales fleets. Net-30 terms for established accounts, one itemized statement a month, a named service advisor, and a quarterly vehicle-health summary built from the inspection records.</p>
+    </div>
+    <div class="card lift">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+      <h3>Employee Car Care Program</h3>
+      <p>Free for the employer to offer. Your employees show a badge or pay stub and get 10% off labor, priority scheduling, free seasonal safety inspections and the same photo-inspection transparency as every customer. We'll supply a one-page flyer for your break room and an intro for your HR newsletter.</p>
+    </div>
+    <div class="card lift">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <h3>Pickup &amp; delivery</h3>
+      <p>For business accounts in West Salem, we'll collect the vehicle from your lot in the morning and return it when the work is done. Approvals and payment happen by text, so your staff never leaves their desk.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container split">
+    <div class="photo"><img src="/assets/img/lift-work.jpg" alt="Technician working under a vehicle" loading="lazy"><span class="tag">Inspection record per vehicle</span></div>
+    <div>
+      <h2>Why companies choose Harold's</h2>
+      <ul class="checks">
+        <li><strong>Documentation.</strong> Every visit's photos, measurements and approvals saved per vehicle. Useful for insurance, resale and for the person who signs the invoices.</li>
+        <li><strong>Predictable costs.</strong> Deferred items are tracked and scheduled, so a $180 brake job doesn't become a $900 rotor-and-caliper job six months later.</li>
+        <li><strong>Less downtime.</strong> Priority scheduling, same-day turnaround where the repair allows, and 11 bays so several units can be in at once.</li>
+        <li><strong>One point of contact.</strong> A named advisor who knows your vehicles and your approval rules.</li>
+        <li><strong>A real warranty.</strong> 1 year / 12,000 miles, honored at NAPA AutoCare Centers nationwide for vehicles that travel.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="inquiry">
+  <div class="container" style="max-width:760px">
+    <h2>Set up a corporate program</h2>
+    <p class="muted">Tell us a little about the company and we'll follow up within one business day with a proposal.</p>
+    <form class="form" data-form="corporate-inquiry" data-success="Thanks! We'll be in touch within one business day.">
+      <div class="row">
+        <div><label for="co-company">Company</label><input id="co-company" name="company" required autocomplete="organization"></div>
+        <div><label for="co-name">Your name &amp; role</label><input id="co-name" name="name" required placeholder="Dana Lee, Office Manager"></div>
+      </div>
+      <div class="row">
+        <div><label for="co-phone">Phone</label><input id="co-phone" name="phone" type="tel" required autocomplete="tel"></div>
+        <div><label for="co-email">Email</label><input id="co-email" name="email" type="email" required autocomplete="email"></div>
+      </div>
+      <div><label for="co-interest">Interested in</label>
+        <select id="co-interest" name="interest">
+          <option value="employee-program">Employee Car Care Program</option>
+          <option value="corporate-account">Corporate vehicle account</option>
+          <option value="fleet">Fleet service</option>
+          <option value="pickup-delivery">Pickup &amp; delivery</option>
+          <option value="all">All of the above</option>
+        </select>
+      </div>
+      <div class="row">
+        <div><label for="co-employees">Employees <span class="muted">(approx.)</span></label><input id="co-employees" name="employees" inputmode="numeric"></div>
+        <div><label for="co-vehicles">Company vehicles <span class="muted">(if any)</span></label><input id="co-vehicles" name="vehicles" inputmode="numeric"></div>
+      </div>
+      <div><label for="co-notes">Anything else?</label><textarea id="co-notes" name="notes" rows="3"></textarea></div>
+      <div data-status class="notice hidden" role="status"></div>
+      <button class="btn btn-primary btn-lg" type="submit">Request a proposal</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+<!-- {"title": "Reservar en línea | Harold's Quality Auto Repair, West Salem", "description": "Reserve su cambio de aceite, frenos, diagnóstico o reparación en línea en Harold's Quality Auto Repair, West Salem. Elija un horario, cuéntenos qué pasa y le confirmamos por texto.", "path": "/es/book"} -->
+<section class="page-hero has-photo">
+  <div class="bg" style="background-image:url(/assets/img/tires.jpg)" role="img" aria-label="Técnico montando una rueda"></div>
+  <div class="container">
+    <p class="eyebrow">Reservar en línea</p>
+    <h1>Elija un horario. Le confirmamos por texto.</h1>
+    <p class="lead">Cuéntenos qué le pasa a su vehículo, elija un día que le convenga y le enviamos la confirmación por texto. ¿No sabe qué necesita? Describa el síntoma y empezamos con un diagnóstico.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split wide-left" style="align-items:flex-start">
+    <div>
+      <div id="booking-embed" class="hidden" style="margin-bottom:2rem"></div>
+      <form id="booking-request" class="form" data-form="appointment-request" data-success="¡Listo! Un asesor de servicio le enviará un texto para confirmar la hora, normalmente dentro de una hora en horario de oficina.">
+        <h2 style="font-size:1.8rem">Solicitud de cita</h2>
+        <div class="row">
+          <div><label for="b-name">Su nombre</label><input id="b-name" name="name" required autocomplete="name"></div>
+          <div><label for="b-phone">Número de celular</label><input id="b-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div><label for="b-email">Correo electrónico <span class="muted">(opcional)</span></label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+        <div class="row">
+          <div><label for="b-year">Año del vehículo</label><input id="b-year" name="vehicle_year" inputmode="numeric" placeholder="2019" required></div>
+          <div><label for="b-make">Marca y modelo</label><input id="b-make" name="vehicle_make_model" placeholder="Subaru Outback" required></div>
+        </div>
+        <div class="row">
+          <div><label for="b-service">¿Qué necesita?</label>
+            <select id="b-service" name="service" required>
+              <option value="">Elija una opción…</option>
+              <option value="diagnostic">Algo anda mal, diagnosticarlo</option>
+              <option value="oil-change">Cambio de aceite e inspección</option>
+              <option value="brakes">Frenos</option>
+              <option value="tires">Llantas, rotación o alineación</option>
+              <option value="check-engine">Luz de check engine</option>
+              <option value="ac">Aire acondicionado o calefacción</option>
+              <option value="scheduled-maintenance">Mantenimiento de 30/60/90 mil</option>
+              <option value="exhaust">Escape</option>
+              <option value="pre-purchase">Inspección antes de comprar</option>
+              <option value="fleet">Vehículo de flotilla</option>
+              <option value="marine">Motor de lancha</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+          <div><label for="b-mileage">Millaje actual <span class="muted">(aprox.)</span></label><input id="b-mileage" name="mileage" inputmode="numeric" placeholder="84,000"></div>
+        </div>
+        <div><label for="b-symptoms">Describa qué está pasando</label><textarea id="b-symptoms" name="symptoms" rows="4" placeholder="Ruido de rechinido al frenar, empezó la semana pasada. Peor en frío." required></textarea></div>
+        <div class="row">
+          <div><label for="b-date">Día preferido</label><input id="b-date" name="preferred_date" type="date"></div>
+          <div><label for="b-time">Horario preferido</label>
+            <select id="b-time" name="preferred_time">
+              <option value="first-available">Lo antes posible</option>
+              <option value="morning">Mañana (7–11)</option>
+              <option value="midday">Mediodía (11–2)</option>
+              <option value="afternoon">Tarde (2–5)</option>
+              <option value="key-drop">Buzón de llaves fuera de horario</option>
+            </select>
+          </div>
+        </div>
+        <div><label for="b-wait">Mientras trabajamos</label>
+          <select id="b-wait" name="wait_or_drop">
+            <option value="drop">Dejo el auto</option>
+            <option value="wait">Espero (solo servicios rápidos)</option>
+            <option value="ride">Necesito que me lleven a casa / al trabajo</option>
+          </select>
+        </div>
+        <label class="consent"><input type="checkbox" name="sms_consent" value="yes" required> <span>Envíenme textos sobre esta cita (confirmación, reporte de inspección, aviso de listo). Pueden aplicar tarifas de mensajes y datos. Responda STOP para cancelar. Vea <a href="/es/privacy">Privacidad y términos de SMS</a>.</span></label>
+        <div data-status class="notice hidden" role="status"></div>
+        <button class="btn btn-primary btn-lg" type="submit">Solicitar cita</button>
+        <p class="form-note">¿Prefiere hablar? Llame al <a data-tel href="#"><span data-phone></span></a> o <a data-sms href="#">envíenos un texto</a>. Lun–Vie 7–5. Hablamos español.</p>
+      </form>
+    </div>
+    <aside>
+      <div class="card">
+        <h3>Qué sigue</h3>
+        <ol class="steps-mini">
+          <li><span class="n">1</span><div><strong>Confirmamos por texto</strong>Normalmente dentro de una hora en horario de oficina.</div></li>
+          <li><span class="n">2</span><div><strong>Deje el auto o use el buzón</strong>Buzón junto a la puerta principal, a cualquier hora.</div></li>
+          <li><span class="n">3</span><div><strong>Reporte de inspección por texto</strong>Fotos y mediciones antes de autorizar nada.</div></li>
+          <li><span class="n">4</span><div><strong>Texto de listo + enlace de pago</strong>Recoja cuando le convenga.</div></li>
+        </ol>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>¿Lo necesita hoy?</h3>
+        <p>Llámenos. Con frecuencia se abren espacios el mismo día y el teléfono es la forma más rápida de tomar uno.</p>
+        <a class="btn btn-outline" data-tel href="#">Llamar <span data-phone></span></a>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Horario</h3>
+        <table class="hours" data-hours></table>
+      </div>
+    </aside>
+  </div>
+</section>
