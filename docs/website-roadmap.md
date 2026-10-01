@@ -114,6 +114,53 @@ Mitchell 1 publishes no prices. Third-party reports: Manager SE from roughly $17
 
 ---
 
+---
+
+## 5. Competitive landscape and the "stay on Mitchell 1 or switch" question
+
+A separate competitive write-up (October 2026) reports that In His Name Automotive (West Salem) and AJ's Auto Repair (Salem) run Tekmetric and actively promote digital vehicle inspections with photo/video and text-link approvals, that Ledoux's uses SMS lead capture and service-interval texts, and that the rest of the local market (T&R, Westgate, Mike's Bellinger, P&M) is on older desktop setups without two-way texting. **I could not independently verify the specific stacks of those shops.** Treat the vendor claims as plausible but unconfirmed. The direction is right regardless: DVI plus automated texting is the retention and ARO lever, and most of the local market has not adopted it.
+
+That write-up recommends Tekmetric or Shop-Ware as the "core engine". That is a bigger decision than a website feature, so here is a direct comparison of what each path gives Harold's.
+
+### What Mitchell 1 already covers (no platform switch)
+| Capability | Mitchell 1 answer | Gap vs Tekmetric |
+|---|---|---|
+| Interactive DVI with photos/video, red/yellow/green, text link, item-by-item approval | **OneFlow Inspections** (launched Sept 2025, integrated with Manager SE Job View) | None material |
+| Declined / deferred work saved to the customer record | OneFlow saves declined items and can schedule future service and send reminders from Manager SE | None |
+| Two-way texting from the shop | **MessageCenter** (Manager SE 7.5+): templates from Work-In-Progress, Order, Revision, Appointment and MPI screens, threads saved | Texts are **template-driven and sent by staff**; Tekmetric fires status texts automatically on status change |
+| Appointment reminders, thank-you + review request | SocialCRM automated texts/emails | None |
+| Service reminders based on vehicle history | SocialCRM service reminders | None |
+| Online booking with real-time availability | SocialCRM Book It Now, or AutoOps | None |
+| Text-to-pay, after-hours pickup, digital signature | 360 Payments integration | None |
+| **Predictive follow-up on declined work** (projected miles/day, "your pads will hit 2mm this month") | Not native. **AutoVitals** does this and integrates with Manager SE; Kukui and Steer also integrate | Tekmetric does not do mileage projection natively either; shops layer AutoVitals/Steer on top of it too |
+| Fully automated status texts (checked in, inspection ready, parts arrived, ready for pickup + pay link) | Partly: staff click a template at each step | **This is the real gap.** |
+
+### Recommendation
+**Do not switch shop management systems in the first 6 to 12 months of new ownership.** A system-of-record migration during an ownership transition stacks staff retraining, data conversion and process change on top of everything else. Mitchell 1 plus OneFlow Inspections, SocialCRM (or AutoVitals for DVI-driven follow-ups) and 360 Payments reaches roughly 80 to 90 percent of the Tekmetric workflow with no migration. The one real gap, fully automatic status texts, is a staff habit problem solved with MessageCenter templates and a checklist.
+
+Set a **decision gate at month 6**: price the Mitchell 1 bundle (Manager SE + OneFlow + SocialCRM/Book It Now + texting) against Tekmetric (published from $179/mo, unlimited users, no contract, migration of customers/vehicles/history included). If the Mitchell 1 quote is materially higher or OneFlow is not in daily use by then, Tekmetric becomes the better path and the website needs no changes to accommodate it, because every customer-facing feature below is backend-agnostic.
+
+### The predictive declined-work workflow, concretely
+1. Tech rates front pads 4mm in OneFlow (yellow). Customer declines on the oil-change visit.
+2. OneFlow stores the item as deferred on the vehicle record in Manager SE.
+3. Follow-up engine (AutoVitals, Kukui or Steer; SocialCRM for simpler time-based reminders) projects wear from visit-to-visit mileage and sends a text with a link to the original inspection photos and a Book It Now slot.
+4. Customer books; the appointment lands in Manager SE with the deferred job already attached.
+
+The website's job in this loop is only step 3's landing page: a branded "view your inspection and book" page, which the vendors provide.
+
+---
+
+## 6. Website moves that follow from this (backend-agnostic)
+
+Add to Tier 1 or Tier 2 of the roadmap above:
+
+1. **"No Surprises. See What We See."** section. A real screenshot of a OneFlow (or AutoVitals) report with annotated brake and tire photos, a three-step strip (we inspect, you get a text with photos, you approve only what you want) and a line about the 30-point inspection on every visit. This is the single clearest differentiator over the legacy shops and parity with the Tekmetric shops.
+2. **"Ready for Pickup" convenience block.** Text when checked in, text with inspection, text when ready, pay from your phone, keys in the after-hours lockbox. Pair it with the warranty badge.
+3. **SMS opt-in lead magnet.** "Text SAVE to (503) 365-9702 for $20 off your first visit" plus a web form that captures mobile number and vehicle. Compliance is not optional here: the form needs express written consent language, STOP/HELP instructions, message frequency and a link to a privacy policy, and the sending number must be registered for 10DLC through whichever platform sends the texts (SocialCRM, AutoVitals, Kukui or Steer all handle this). Do not send marketing texts from a personal cell.
+4. **Vehicle-history teaser.** "Every inspection, photo and invoice saved to your vehicle's record. Ask us for your history any time." Costs nothing, signals the system is modern.
+5. **Service-interval content.** A 30/60/90k page per common make (Subaru, Toyota, Honda, Ford, GM) with a Book Online button. This feeds the reminder texts and ranks for "Subaru 60k service West Salem".
+
+
 ## Sources
 - Mitchell 1 Book It Now press release: https://mitchell1.com/press/socialcrm-book-it-now-new-shop-marketing-services/
 - Book It Now May 2026 enhancements (Snap-on): https://www.snapon.com/Snap-on-Files/News-Business-Units/News-Tools/2026/Mitchell-1-Enhances-SocialCRM-Book-it-Now-with-New-Scheduling-and-Appointment-Recovery-Features.pdf
@@ -126,4 +173,8 @@ Mitchell 1 publishes no prices. Third-party reports: Manager SE from roughly $17
 - Mitchell 1 partner API program (third-party profile): https://github.com/api-evangelist/mitchell1
 - AutoOps + Mitchell 1: https://www.autoops.com/home-1
 - Manager SE pricing reports: https://www.capterra.com/p/145351/Manager-SE/ and https://shoptechscore.com/mitchell-1-review/
+- Manager SE MessageCenter texting: https://mitchell1.com/press/mitchell-1-improves-productivity-solutions-built-text-messaging/
+- OneFlow Inspections deferred work: https://autosphere.ca/mechanical/2025/09/09/mitchell-1-launches-manager-se-inspections-feature/
+- Tekmetric vs Mitchell 1 (vendor page, pricing and migration claims): https://www.tekmetric.com/comparisons/tekmetric-vs-mitchell
+- AutoVitals partner integrations: https://www.autovitals.com/partner-integration/
 - Current live site (WhirLocal redirect): https://whirlocal.io/company/harolds-quality-auto-repair-inc/
