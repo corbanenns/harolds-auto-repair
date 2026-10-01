@@ -19,7 +19,6 @@ Every visit includes a digital multi-point inspection. The technician photograph
 - Engine and transmission repair and replacement: /services/engine-transmission
 - A/C and heating (R-134a and R-1234yf): /services/ac-heating
 - Custom exhaust and muffler repair, bent and welded in-house: /services/exhaust
-- Marine and boat motor service: /services/marine
 - Fleet accounts (priority turnaround, inspection logs, monthly invoicing): /fleet
 - Corporate accounts, Employee Car Care Program, pickup and delivery: /corporate
 All makes and models, import and domestic, light trucks, SUVs, diesel pickups, hybrids.

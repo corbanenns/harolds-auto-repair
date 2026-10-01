@@ -21,7 +21,7 @@ See `docs/website-roadmap.md` for the strategy behind the site and the Mitchell 
 | `/contact` | Address, hours, map, message form |
 | `/privacy` | Privacy policy and SMS program terms (required for 10DLC registration) |
 | `/services` | Overview |
-| `/services/*` | Oil change, brakes, tires-alignment, diagnostics, engine-transmission, ac-heating, exhaust, marine |
+| `/services/*` | Oil change, brakes, tires-alignment, diagnostics, engine-transmission, ac-heating, exhaust |
 | `/es/...` | Spanish version of every page above, same slugs (`/es/book`, `/es/services/brakes`, …) |
 
 ## Connecting Mitchell 1 and other services

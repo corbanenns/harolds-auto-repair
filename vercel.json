@@ -2,6 +2,26 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
-    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] }
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/services/marine",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/es/services/marine",
+      "destination": "/es/services",
+      "permanent": true
+    }
   ]
 }
