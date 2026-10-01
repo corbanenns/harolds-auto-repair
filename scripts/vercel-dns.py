@@ -50,11 +50,12 @@ def main():
     if not TOKEN and not DRY:
         sys.exit("VERCEL_TOKEN is not set. Add it to the environment (never paste it in chat) and re-run.")
     existing = call("GET", f"/v4/domains/{DOMAIN}/records?limit=100").get("records", []) if TOKEN else []
-    have = {(r["type"], r.get("name", ""), r["value"]) for r in existing}
+    norm = lambda v: v.rstrip(".").lower()
+    have = {(r["type"], r.get("name", ""), norm(r["value"])) for r in existing}
     spf = [r for r in existing if r["type"] == "TXT" and r.get("name", "") == "" and r["value"].startswith("v=spf1")]
     print(f"{len(existing)} existing records on {DOMAIN}")
     for r in RECORDS:
-        key = (r["type"], r["name"], r["value"])
+        key = (r["type"], r["name"], norm(r["value"]))
         label = f'{r["type"]:4} {r["name"] or "@":18} {r["value"]}' + (f' (prio {r["mxPriority"]})' if "mxPriority" in r else "")
         if key in have:
             print("  skip (exists)", label); continue
