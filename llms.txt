@@ -9,7 +9,7 @@
 - Facility: 8,000 sq ft, 11 bays, 9 lifts, alignment rack, in-house exhaust bending and welding
 
 ## How a visit works
-Every visit includes a digital multi-point inspection. The technician photographs worn parts and texts the customer a report with measurements (brake pad mm, tire tread depth, battery voltage) rated green / yellow / red. The customer approves or declines each item from their phone; no work starts without approval. Customers get a text when the vehicle is ready with a secure pay link, and can pick up after hours.
+Every visit includes a digital multi-point inspection. The technician photographs worn parts and texts the customer a report with measurements (brake pad mm, tire tread depth, battery voltage) rated green / yellow / red. The customer approves or declines each item from their phone; no work starts without approval. Customers get a text when the vehicle is ready with a secure pay link, and can pick up after hours. There is no courtesy shuttle or loaner car.
 
 ## Services
 - Oil change and factory scheduled maintenance (30/60/90k): /services/oil-change-maintenance
@@ -20,7 +20,7 @@ Every visit includes a digital multi-point inspection. The technician photograph
 - A/C and heating (R-134a and R-1234yf): /services/ac-heating
 - Custom exhaust and muffler repair, bent and welded in-house: /services/exhaust
 - Fleet accounts (priority turnaround, inspection logs, monthly invoicing): /fleet
-- Corporate accounts, Employee Car Care Program, pickup and delivery: /corporate
+- Corporate accounts, Employee Car Care Program, after-hours drop-off and pickup: /corporate
 All makes and models, import and domestic, light trucks, SUVs, diesel pickups, hybrids.
 
 ## Programs
