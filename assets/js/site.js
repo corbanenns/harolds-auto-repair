@@ -100,11 +100,41 @@
       }
       var btn = form.querySelector("[type=submit]"); if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = T.sending; }
       fetch(C.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); show("ok", form.getAttribute("data-success") || T.sent); })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); show("ok", form.getAttribute("data-success") || T.sent); track("form_submit", { form: data.form }, "form", "Lead"); })
         .catch(function () { show("warn", T.failed + "<a " + 'href="' + telHref + '">' + (C.phoneDisplay || "") + "</a>."); })
         .then(function () { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; } });
     });
   });
+
+  /* ---- Analytics & ad tags (only when configured) ---- */
+  var GA = C.ga4MeasurementId, ADS = C.googleAdsId, PX = C.metaPixelId, LABELS = C.googleAdsConversions || {};
+  function script(src) { var sc = document.createElement("script"); sc.async = true; sc.src = src; document.head.appendChild(sc); }
+  if (GA || ADS) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    gtag("js", new Date());
+    if (GA) gtag("config", GA);
+    if (ADS) gtag("config", ADS);
+    script("https://www.googletagmanager.com/gtag/js?id=" + (GA || ADS));
+  }
+  if (PX) {
+    if (!window.fbq) { var n = window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; n.push = n; n.loaded = true; n.version = "2.0"; n.queue = []; }
+    script("https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", PX); fbq("track", "PageView");
+  }
+  function track(name, params, adsKey, fbEvent) {
+    params = params || {}; params.language = LANG;
+    if (window.gtag && (GA || ADS)) {
+      gtag("event", name, params);
+      if (ADS && LABELS[adsKey]) gtag("event", "conversion", { send_to: ADS + "/" + LABELS[adsKey] });
+    }
+    if (window.fbq && PX && fbEvent) fbq("track", fbEvent, params);
+    document.dispatchEvent(new CustomEvent("harolds:track", { detail: { name: name, params: params } }));
+  }
+  window.HAROLDS_TRACK = track;
+  $all("[data-tel]").forEach(function (el) { el.addEventListener("click", function () { track("call_click", { location: el.closest("section,header,footer,nav") ? el.closest("section,header,footer,nav").className.split(" ")[0] : "" }, "call", "Contact"); }); });
+  $all("[data-sms],[data-sms-offer]").forEach(function (el) { el.addEventListener("click", function () { track("text_click", { offer: el.hasAttribute("data-sms-offer") }, "text", "Contact"); }); });
+  $all("[data-book]").forEach(function (el) { el.addEventListener("click", function () { track("book_click", { live_scheduler: !!C.bookingUrl }, "book", "Schedule"); }); });
 
   /* ---- Nav ---- */
   var toggle = document.querySelector(".nav-toggle"), nav = document.querySelector(".nav");

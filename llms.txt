@@ -1,0 +1,35 @@
+# Harold's Quality Auto Repair
+
+> Independent auto repair shop in West Salem, Oregon, open since 1996. ASE Master Certified technicians, BBB Accredited (A+), NAPA AutoCare Center. Every repair carries a 1 year / 12,000 mile warranty honored at NAPA AutoCare Centers nationwide. English and Spanish.
+
+- Address: 675 Bartell Dr NW, Salem, OR 97304 (West Salem)
+- Phone / text: (503) 365-9702
+- Hours: Monday–Friday 7:00 AM–5:00 PM; closed Saturday and Sunday; 24-hour key drop
+- Website: https://www.haroldsautorepair.com (Spanish: https://www.haroldsautorepair.com/es)
+- Facility: 8,000 sq ft, 11 bays, 9 lifts, alignment rack, in-house exhaust bending and welding
+
+## How a visit works
+Every visit includes a digital multi-point inspection. The technician photographs worn parts and texts the customer a report with measurements (brake pad mm, tire tread depth, battery voltage) rated green / yellow / red. The customer approves or declines each item from their phone; no work starts without approval. Customers get a text when the vehicle is ready with a secure pay link, and can pick up after hours.
+
+## Services
+- Oil change and factory scheduled maintenance (30/60/90k): /services/oil-change-maintenance
+- Brake repair: /services/brakes
+- Tires and four-wheel alignment: /services/tires-alignment
+- Check engine light and diagnostics: /services/diagnostics
+- Engine and transmission repair and replacement: /services/engine-transmission
+- A/C and heating (R-134a and R-1234yf): /services/ac-heating
+- Custom exhaust and muffler repair, bent and welded in-house: /services/exhaust
+- Marine and boat motor service: /services/marine
+- Fleet accounts (priority turnaround, inspection logs, monthly invoicing): /fleet
+- Corporate accounts, Employee Car Care Program, pickup and delivery: /corporate
+All makes and models, import and domestic, light trucks, SUVs, diesel pickups, hybrids.
+
+## Programs
+- Maintenance Club: annual membership with two synthetic oil changes, two rotations, two digital inspections and 10% off repairs: /maintenance-club
+- First-visit offer by text and seasonal road-trip and winter checks: /specials
+- Financing available on larger repairs; warranty details: /about
+
+## Booking and payment
+- Book online: /book
+- Pay invoice by text link, after-hours pickup: /pay
+- Digital inspections explained: /inspections

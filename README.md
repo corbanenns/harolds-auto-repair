@@ -39,10 +39,21 @@ Everything integration-related lives in **`assets/js/config.js`**. Edit values t
 | `smsNumber` | 10DLC-registered texting number | Issued by SocialCRM or whichever platform sends marketing texts |
 | `smsKeyword`, `firstVisitOffer` | Keyword and offer text | Must match the auto-reply configured in the texting platform |
 | `hours`, `mapEmbed` | | Verify Friday hours against the shop |
+| `ga4MeasurementId` | `G-…` | Google Analytics 4 → Admin → Data streams |
+| `googleAdsId`, `googleAdsConversions` | `AW-…` plus one conversion label per action (call, text, book, form) | Google Ads → Tools → Conversions |
+| `metaPixelId` | Pixel ID | Meta Events Manager |
+
+With any of the tracking IDs set, the site loads the official tag and reports `call_click`, `text_click`, `book_click` and `form_submit` (with the form name) to GA4, fires the matching Google Ads conversion when a label is set, and sends Meta `Contact`, `Schedule` and `Lead` events. Nothing loads when the IDs are empty. Every event is also dispatched as a `harolds:track` DOM event for call-tracking or other scripts.
 
 Until `formEndpoint` is set, forms show a "call or text us" notice instead of pretending to send. Until `bookingUrl` is set, buttons go to the request form.
 
 Form payloads look like `{"form":"appointment-request","name":...,"phone":...,"vehicle_year":...,"service":...,"symptoms":...,"sms_consent":"yes","page":"/book","submitted_at":"..."}`. Form names: `appointment-request`, `contact`, `maintenance-club`, `first-visit-coupon`, `fleet-inquiry`, `manager-feedback`.
+
+## SEO
+
+Every page has a unique title, description, canonical and hreflang pair, and `sitemap.xml` / `robots.txt` are generated. The build adds JSON-LD automatically: `AutoRepair` on the home pages, `Service` on service pages, `FAQPage` wherever a page has `<details>` FAQs, and `BreadcrumbList` on interior pages. `llms.txt` at the root summarises the business for AI crawlers; update it when services or hours change.
+
+Still to do outside the code: claim and update the Google Business Profile (link it to this domain, match name, address, phone and hours), set up Google Search Console and Bing Webmaster Tools and submit the sitemap, and update the WhirLocal, BBB and Yelp listings to the new domain.
 
 ## Editing pages
 

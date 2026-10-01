@@ -194,10 +194,10 @@ def write(lang):
 </section>
 """
         (out / f"{s['slug']}.html").write_text(html)
-    cards = "\n".join(f"""      <a class="card photo-card" href="{P}/services/{s['slug']}"><img src="/assets/img/{s['img']}" alt="" loading="lazy"><div class="body"><h3>{s[lang]['name']}</h3><p>{s[lang]['lead'].split('. ')[0]}.</p><span class="more">{t['more']}</span></div></a>""" for s in S)
+    cards = "\n".join(f"""      <a class="card photo-card" href="{P}/services/{s['slug']}"><img src="/assets/img/{s['img']}" alt="{s[lang]['short']}" loading="lazy"><div class="body"><h3>{s[lang]['name']}</h3><p>{s[lang]['lead'].split('. ')[0]}.</p><span class="more">{t['more']}</span></div></a>""" for s in S)
     ov = f"""<!-- {json.dumps({"title": t['ov_title'], "description": t['ov_desc'], "path": f"{P}/services"}, ensure_ascii=False)} -->
 <section class="page-hero has-photo">
-  <div class="bg" style="background-image:url(/assets/img/lift-work.jpg)" role="img" aria-label=""></div>
+  <div class="bg" style="background-image:url(/assets/img/lift-work.jpg)" role="img" aria-label="{t['ov_eyebrow']}"></div>
   <div class="container">
     <p class="eyebrow">{t['ov_eyebrow']}</p>
     <h1>{t['ov_h1']}</h1>
@@ -208,7 +208,7 @@ def write(lang):
   <div class="container">
     <div class="grid grid-3">
 {cards}
-      <a class="card photo-card" href="{P}/fleet"><img src="/assets/img/under-car.jpg" alt="" loading="lazy"><div class="body"><h3>{t['fleet_h']}</h3><p>{t['fleet_p']}</p><span class="more">{t['more']}</span></div></a>
+      <a class="card photo-card" href="{P}/fleet"><img src="/assets/img/under-car.jpg" alt="{t['fleet_h']}" loading="lazy"><div class="body"><h3>{t['fleet_h']}</h3><p>{t['fleet_p']}</p><span class="more">{t['more']}</span></div></a>
     </div>
   </div>
 </section>

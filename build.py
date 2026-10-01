@@ -52,6 +52,26 @@ STRINGS = {
 
 LAYOUT = (SRC / "layout.html").read_text()
 
+def strip_tags(h):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", h)).strip()
+
+def auto_jsonld(content, path, lang, t):
+    """FAQPage from <details><summary>Q</summary><p>A</p></details>, BreadcrumbList for interior pages."""
+    out = []
+    faqs = re.findall(r"<details>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>\s*</details>", content, re.S)
+    if faqs:
+        out.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": strip_tags(q), "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a)}} for q, a in faqs]})
+    home = "/es" if lang == "es" else "/"
+    if path not in ("/", "/es"):
+        h1 = re.search(r"<h1[^>]*>(.*?)</h1>", content, re.S)
+        crumbs = [{"@type": "ListItem", "position": 1, "name": "Harold's Quality Auto Repair", "item": DOMAIN + home}]
+        if "/services/" in path:
+            crumbs.append({"@type": "ListItem", "position": 2, "name": t["nav_services"], "item": DOMAIN + t["p"] + "/services"})
+        crumbs.append({"@type": "ListItem", "position": len(crumbs) + 1, "name": strip_tags(h1.group(1)) if h1 else path, "item": DOMAIN + path})
+        out.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": crumbs})
+    return out
+
 def page_lang(src_path):
     rel = src_path.relative_to(PAGES)
     return ("es", rel.relative_to("es")) if rel.parts[0] == "es" else ("en", rel)
@@ -75,9 +95,11 @@ def render(src_path):
         hreflang = (f'<link rel="alternate" hreflang="en" href="{DOMAIN}{en_path}">\n'
                     f'  <link rel="alternate" hreflang="es" href="{DOMAIN}{es_path}">\n'
                     f'  <link rel="alternate" hreflang="x-default" href="{DOMAIN}{en_path}">')
-    jsonld = ""
+    blocks = []
     if meta.get("jsonld"):
-        jsonld = '<script type="application/ld+json">' + json.dumps(meta["jsonld"], indent=2, ensure_ascii=False) + "</script>"
+        blocks.append(meta["jsonld"])
+    blocks += auto_jsonld(content, path, lang, t)
+    jsonld = "\n  ".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + "</script>" for b in blocks)
     html = LAYOUT
     vals = {"title": meta["title"], "description": meta["description"], "path": path, "content": content,
             "jsonld": jsonld, "hreflang": hreflang, "alt_path": alt_path if alt_src.exists() else (alt_path if lang == "en" else "/"),

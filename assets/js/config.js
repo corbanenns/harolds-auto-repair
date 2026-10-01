@@ -59,6 +59,16 @@ window.HAROLDS = {
   // "call or text us" notice instead of pretending to send.
   formEndpoint: "",
 
+  // Analytics and ad tracking. Leave empty and nothing loads. When set, site.js injects
+  // the official tags and reports these events: call_click, text_click, book_click,
+  // form_submit (with the form name), plus Google Ads conversions and Meta Lead/Contact.
+  ga4MeasurementId: "",        // e.g. "G-XXXXXXXXXX"  (Google Analytics 4 → Admin → Data streams)
+  googleAdsId: "",             // e.g. "AW-123456789"   (Google Ads → Tools → Conversions → tag setup)
+  googleAdsConversions: {      // conversion labels from Google Ads, one per action; leave "" to skip
+    call: "", text: "", book: "", form: ""
+  },
+  metaPixelId: "",             // e.g. "1234567890"     (Meta Events Manager → Data sources → Pixel)
+
   // Google Maps embed URL generated from maps.google.com → Share → Embed a map
   mapEmbed: "https://www.google.com/maps?q=675+Bartell+Dr+NW,+Salem,+OR+97304&output=embed"
 };
