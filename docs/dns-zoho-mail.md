@@ -28,6 +28,15 @@ Notes
 - Change the DMARC `rua` mailbox to whichever Zoho mailbox should receive aggregate reports.
 - Zoho's console may also offer an optional CNAME for a custom webmail URL (e.g. `mail.haroldsautorepair.com → business.zoho.com`). Not required.
 
+## ZeptoMail (transactional email) – added 2026-10-01
+
+| Type | Name / Host | Value |
+|---|---|---|
+| CNAME | `bounce-zem` | `cluster89.zeptomail.com` |
+| TXT | `30212055._domainkey` | ZeptoMail DKIM public key (in `scripts/vercel-dns.py`) |
+
+Status: Zoho Mail verification, MX, SPF, DKIM (`zmail`), DMARC, and both ZeptoMail records are live in Vercel DNS.
+
 ## Verify after adding
 
 ```bash

@@ -31,6 +31,9 @@ RECORDS = [
     {"type": "MX",  "name": "", "value": "mx3.zoho.com", "mxPriority": 50, "ttl": 60},
     {"type": "TXT", "name": "", "value": "v=spf1 include:zohomail.com -all", "ttl": 60},
     {"type": "TXT", "name": "_dmarc", "value": f"v=DMARC1; p=none; rua=mailto:{RUA}; adkim=r; aspf=r", "ttl": 60},
+    # ZeptoMail (Zoho transactional email): bounce domain + its own DKIM selector
+    {"type": "CNAME", "name": "bounce-zem", "value": "cluster89.zeptomail.com", "ttl": 60},
+    {"type": "TXT", "name": "30212055._domainkey", "value": "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCTGl8EhwaP1Zo91i2oC1wR/kGOUvBy28NgTUklxMKYtSWmX6UioVfz7g19YPebuT0VR8AfLy4I/2CbART9ghqtO0ORkcg9ijLZrGD+OV+gjN/Qe4sbidvw2FFlRXID2xWEIeLmTvgSUzIBPZiq2Qz6LUTI51CErn1KflPvkp+fvQIDAQAB", "ttl": 60},
 ]
 if os.environ.get("ZOHO_DKIM_VALUE"):
     sel = os.environ.get("ZOHO_DKIM_SELECTOR", "zmail")
