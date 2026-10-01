@@ -1,0 +1,92 @@
+<!-- {"title": "Book Online | Harold's Quality Auto Repair, West Salem", "description": "Schedule your oil change, brake service, diagnostics or repair online at Harold's Quality Auto Repair in West Salem. Pick a time, tell us what's going on, and we'll confirm by text.", "path": "/book"} -->
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Book online</p>
+    <h1>Pick a time. We'll confirm by text.</h1>
+    <p class="lead">Tell us what's going on with your vehicle, choose a day that works, and we'll text you a confirmation. Not sure what you need? Describe the symptom and we'll start with a diagnosis.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split wide-left" style="align-items:flex-start">
+    <div>
+      <div id="booking-embed" class="hidden" style="margin-bottom:2rem"></div>
+      <form id="booking-request" class="form" data-form="appointment-request" data-success="Got it! A service advisor will text you to confirm a time, usually within one business hour.">
+        <h2 style="font-size:1.4rem">Appointment request</h2>
+        <div class="row">
+          <div><label for="b-name">Your name</label><input id="b-name" name="name" required autocomplete="name"></div>
+          <div><label for="b-phone">Mobile number</label><input id="b-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div><label for="b-email">Email <span class="muted">(optional)</span></label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+        <div class="row">
+          <div><label for="b-year">Vehicle year</label><input id="b-year" name="vehicle_year" inputmode="numeric" placeholder="2019" required></div>
+          <div><label for="b-make">Make &amp; model</label><input id="b-make" name="vehicle_make_model" placeholder="Subaru Outback" required></div>
+        </div>
+        <div class="row">
+          <div><label for="b-service">What do you need?</label>
+            <select id="b-service" name="service" required>
+              <option value="">Choose one…</option>
+              <option value="diagnostic">Something's wrong, diagnose it</option>
+              <option value="oil-change">Oil change &amp; inspection</option>
+              <option value="brakes">Brakes</option>
+              <option value="tires">Tires, rotation or alignment</option>
+              <option value="check-engine">Check engine light</option>
+              <option value="ac">A/C or heating</option>
+              <option value="scheduled-maintenance">30/60/90k scheduled maintenance</option>
+              <option value="exhaust">Exhaust</option>
+              <option value="pre-purchase">Pre-purchase inspection</option>
+              <option value="fleet">Fleet vehicle</option>
+              <option value="marine">Boat motor</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div><label for="b-mileage">Current mileage <span class="muted">(approx.)</span></label><input id="b-mileage" name="mileage" inputmode="numeric" placeholder="84,000"></div>
+        </div>
+        <div><label for="b-symptoms">Describe what's happening</label><textarea id="b-symptoms" name="symptoms" rows="4" placeholder="Grinding noise from the front when braking, started last week. Worse when cold." required></textarea></div>
+        <div class="row">
+          <div><label for="b-date">Preferred day</label><input id="b-date" name="preferred_date" type="date"></div>
+          <div><label for="b-time">Preferred time</label>
+            <select id="b-time" name="preferred_time">
+              <option value="first-available">First available</option>
+              <option value="morning">Morning (7–11)</option>
+              <option value="midday">Midday (11–2)</option>
+              <option value="afternoon">Afternoon (2–5)</option>
+              <option value="key-drop">After-hours key drop</option>
+            </select>
+          </div>
+        </div>
+        <div><label for="b-wait">While we work</label>
+          <select id="b-wait" name="wait_or_drop">
+            <option value="drop">I'll drop it off</option>
+            <option value="wait">I'll wait (quick services only)</option>
+            <option value="ride">I need a ride home / to work</option>
+          </select>
+        </div>
+        <label class="consent"><input type="checkbox" name="sms_consent" value="yes" required> <span>Text me about this appointment (confirmation, inspection report, ready-for-pickup). Msg &amp; data rates may apply. Reply STOP to opt out. See <a href="/privacy">Privacy &amp; SMS Terms</a>.</span></label>
+        <div data-status class="notice hidden" role="status"></div>
+        <button class="btn btn-primary btn-lg" type="submit">Request appointment</button>
+        <p class="form-note">Prefer to talk? Call <a data-tel href="#"><span data-phone></span></a> or <a data-sms href="#">text us</a>. Mon–Fri 7–5.</p>
+      </form>
+    </div>
+    <aside>
+      <div class="card">
+        <h3>What happens next</h3>
+        <ol class="steps-mini">
+          <li><span class="n">1</span><div><strong>We confirm by text</strong>Usually within an hour during business hours.</div></li>
+          <li><span class="n">2</span><div><strong>Drop off or key drop</strong>Lockbox by the front door, any hour.</div></li>
+          <li><span class="n">3</span><div><strong>Inspection report by text</strong>Photos and measurements before anything is authorized.</div></li>
+          <li><span class="n">4</span><div><strong>Ready text + pay link</strong>Pick up when it suits you.</div></li>
+        </ol>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Need it today?</h3>
+        <p>Call us. Same-day slots open up often and the phone is the fastest way to grab one.</p>
+        <a class="btn btn-outline" data-tel href="#">Call <span data-phone></span></a>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>Hours</h3>
+        <table class="hours" data-hours></table>
+      </div>
+    </aside>
+  </div>
+</section>

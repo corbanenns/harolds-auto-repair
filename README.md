@@ -1,153 +1,69 @@
-# Harold's Quality Auto Repair Inc - Website
+# Harold's Quality Auto Repair – Website
 
-A modern, professional single-page website for Harold's Quality Auto Repair Inc, a trusted auto repair shop in Salem, Oregon since 1996.
+Static, multi-page site for Harold's Quality Auto Repair Inc, West Salem, Oregon. Built to pair with Mitchell 1 Manager SE add-ons (online booking, digital inspections, text-to-pay, SocialCRM). No framework, no build step on Vercel.
 
-## Features
+See `docs/website-roadmap.md` for the strategy behind the site and the Mitchell 1 integration research.
 
-- **Responsive Design**: Mobile-first approach ensuring perfect display on all devices
-- **Smooth Animations**: Scroll-triggered animations and smooth navigation
-- **Interactive Elements**: Contact form, Google Maps integration, and click-to-call functionality
-- **Performance Optimized**: Fast loading with inline CSS and minimal JavaScript
-- **SEO Ready**: Proper meta tags and semantic HTML structure
-- **Accessibility**: WCAG compliant with proper contrast ratios and keyboard navigation
+## Pages
 
-## Technology Stack
+| Path | Purpose |
+|---|---|
+| `/` | Home: "See what we see" DVI pitch, services, text-update convenience, reviews, club + first-visit offer, about, visit |
+| `/book` | Booking. Shows the live scheduler when configured, otherwise a diagnostics-first appointment request form |
+| `/inspections` | How digital inspections work, sample report, FAQ |
+| `/pay` | Pay-by-text explainer, after-hours pickup, financing, warranty |
+| `/maintenance-club` | Annual membership offer + signup form |
+| `/specials` | First-visit coupon by SMS (with consent language), seasonal checks |
+| `/fleet` | Fleet accounts + quote form |
+| `/review` | One public review link for everyone + direct-to-manager form (not gated) |
+| `/about` | History, facility, warranty (`#warranty`), financing (`#financing`) |
+| `/contact` | Address, hours, map, message form |
+| `/privacy` | Privacy policy and SMS program terms (required for 10DLC registration) |
+| `/services` | Overview |
+| `/services/*` | Oil change, brakes, tires-alignment, diagnostics, engine-transmission, ac-heating, exhaust, marine |
 
-- HTML5
-- CSS3 (Flexbox & Grid)
-- Vanilla JavaScript
-- Font Awesome Icons
-- Google Maps Embed API
+## Connecting Mitchell 1 and other services
 
-## Deployment to Vercel
+Everything integration-related lives in **`assets/js/config.js`**. Edit values there; no page edits needed.
 
-### Prerequisites
-- A Vercel account (sign up at https://vercel.com)
-- Git installed on your machine (optional)
+| Config key | What to paste | Where it comes from |
+|---|---|---|
+| `bookingUrl` | Scheduler link | SocialCRM Book It Now, SocialCRM Online Appointments, or AutoOps. Every "Book Online" button opens it. |
+| `bookingEmbed` | Iframe/script snippet | Same vendors, if you'd rather embed the scheduler on `/book` than link out |
+| `payUrl` | Hosted payment page URL | 360 Payments / 1stMile / Global Payments, if offered. Text-to-pay links from Manager SE don't need this. |
+| `reviewUrl` | Google "write a review" short link | Google Business Profile → Ask for reviews. Or the SureCritic link from SocialCRM. |
+| `googleRating`, `googleReviewCount` | Numbers | Google Business Profile. Leave `null` to hide. |
+| `formEndpoint` | URL that accepts a JSON POST | Formspree / Basin / a Vercel function, or a SocialCRM lead endpoint. All five forms post here with a `form` field naming which one. |
+| `smsNumber` | 10DLC-registered texting number | Issued by SocialCRM or whichever platform sends marketing texts |
+| `smsKeyword`, `firstVisitOffer` | Keyword and offer text | Must match the auto-reply configured in the texting platform |
+| `hours`, `mapEmbed` | | Verify Friday hours against the shop |
 
-### Method 1: Deploy via Vercel Dashboard (Recommended)
+Until `formEndpoint` is set, forms show a "call or text us" notice instead of pretending to send. Until `bookingUrl` is set, buttons go to the request form.
 
-1. **Login to Vercel**
-   - Go to https://vercel.com and sign in
+Form payloads look like `{"form":"appointment-request","name":...,"phone":...,"vehicle_year":...,"service":...,"symptoms":...,"sms_consent":"yes","page":"/book","submitted_at":"..."}`. Form names: `appointment-request`, `contact`, `maintenance-club`, `first-visit-coupon`, `fleet-inquiry`, `manager-feedback`.
 
-2. **Import Project**
-   - Click "Add New..." → "Project"
-   - Select "Import Third-Party Git Repository"
-   - Or drag and drop the project folder
+## Editing pages
 
-3. **Configure Project**
-   - Project Name: `harolds-auto-repair`
-   - Framework Preset: None (HTML/CSS/JS)
-   - Root Directory: Leave as is
-   - Build Settings: Leave all fields empty
+Sources are in `src/pages/` (one file per page, wrapped by `src/layout.html` which holds the header, footer and mobile action bar). After editing, run:
 
-4. **Deploy**
-   - Click "Deploy"
-   - Wait for deployment to complete (usually under 1 minute)
-
-### Method 2: Deploy via Vercel CLI
-
-1. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Navigate to Project Directory**
-   ```bash
-   cd harolds-auto-repair
-   ```
-
-3. **Deploy**
-   ```bash
-   vercel
-   ```
-   Follow the prompts:
-   - Set up and deploy: Y
-   - Which scope: Select your account
-   - Link to existing project: N
-   - Project name: harolds-auto-repair
-   - Directory: ./
-   - Want to override settings: N
-
-### Method 3: Deploy via Git
-
-1. **Initialize Git Repository**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   ```
-
-2. **Push to GitHub/GitLab/Bitbucket**
-   ```bash
-   git remote add origin [your-repo-url]
-   git push -u origin main
-   ```
-
-3. **Import in Vercel**
-   - Go to Vercel Dashboard
-   - Click "Import Git Repository"
-   - Select your repository
-   - Deploy with default settings
-
-## Post-Deployment
-
-After deployment, you'll receive a URL like:
-- `https://harolds-auto-repair.vercel.app`
-- `https://harolds-auto-repair-[your-username].vercel.app`
-
-### Custom Domain (Optional)
-
-1. In Vercel Dashboard, go to your project
-2. Navigate to "Settings" → "Domains"
-3. Add your custom domain
-4. Follow DNS configuration instructions
-
-## Project Structure
-
-```
-harolds-auto-repair/
-├── index.html          # Main website file
-├── README.md          # This file
-└── .gitignore         # Git ignore file (optional)
+```bash
+python3 build.py
 ```
 
-## Customization
+This rewrites the HTML files in the repo root and `services/`, plus `sitemap.xml` and `robots.txt`. Commit the generated files; Vercel serves them as-is (`vercel.json` enables clean URLs so `/book` serves `book.html`).
 
-### Update Business Information
-- Edit contact details in the Contact section
-- Update business hours in the hours table
-- Modify service offerings as needed
+Each page source starts with a JSON comment holding its `title`, `description`, `path` and optional `jsonld` structured data.
 
-### Styling Changes
-- Colors are defined as CSS variables in `:root`
-- Primary colors: Red (#DC143C) and Yellow (#FFD700)
-- Modify animations in the CSS animation section
+## Still to do before launch
 
-### Content Updates
-- All content is in the single `index.html` file
-- Update testimonials with real customer reviews
-- Add actual team photos if available
+- Replace the stock-free hero and about sections with real photos of the shop, bays and team (`assets/img/`).
+- Confirm hours, the "new ownership in 2026" line on `/` and `/about`, Maintenance Club pricing and the first-visit offer amount.
+- Point `haroldsqualityautorepair.com` at Vercel (it currently redirects to the WhirLocal profile).
+- Get the Google Business Profile "Book" button enabled through Book It Now so Maps users can schedule without visiting the site.
+- Register the texting number for 10DLC through the texting vendor, using `/privacy` as the program terms page.
 
-## Performance Tips
+## Deploy to Vercel
 
-- The site scores 95+ on Google PageSpeed Insights
-- Images are optimized and lazy-loaded
-- CSS and JS are inline to reduce HTTP requests
-- Fonts use system font stack for fast loading
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Android)
-
-## License
-
-This project is created for Harold's Quality Auto Repair Inc. All rights reserved.
-
-## Support
-
-For website updates or technical support, please contact the development team.
+1. Import this repo at vercel.com → Add New → Project. Framework preset: Other. No build command, output directory `.`.
+2. Add the custom domain under Project → Settings → Domains and update DNS at the registrar.
+3. Every push to `main` redeploys.

@@ -1,0 +1,53 @@
+<!-- {"title": "Specials & Coupons | Harold's Quality Auto Repair, West Salem", "description": "Current specials at Harold's Quality Auto Repair in West Salem: first-visit discount by text, seasonal road-trip and winter readiness checks, and more.", "path": "/specials"} -->
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Specials</p>
+    <h1>Current specials</h1>
+    <p class="lead">A few ways to save. Coupons go straight to your phone, so there's nothing to print.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid-2">
+    <div class="price-card">
+      <p class="eyebrow" style="color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem">New customers</p>
+      <h2 style="font-size:1.7rem"><span data-offer>$20 off your first visit</span></h2>
+      <p class="muted">Text <strong data-sms-keyword>SAVE</strong> to <strong data-phone></strong> and we'll reply with your coupon. Show it at the counter or mention it when you book. Good on any service or repair over $100.</p>
+      <div class="btn-row"><a class="btn btn-yellow btn-lg" data-sms-offer href="#">Text SAVE to get it</a></div>
+      <p class="small muted" style="margin:1rem 0 0">Or use the form below to get it by text. By texting SAVE you agree to receive your coupon and occasional service reminders from Harold's (about 2 msgs/month). Msg &amp; data rates may apply. Reply STOP to cancel, HELP for help. <a href="/privacy">Privacy &amp; SMS Terms</a>.</p>
+    </div>
+    <div class="grid" style="gap:16px">
+      <div class="card">
+        <h3>Road-Trip Inspection · Spring &amp; Summer</h3>
+        <p>Headed to the coast or over the pass? A/C performance check, tire tread and pressure, coolant condition, belts, hoses, brakes and a battery load test. Photos texted to you, like always.</p>
+        <a class="more" data-book href="/book?service=diagnostic">Book a road-trip check →</a>
+      </div>
+      <div class="card">
+        <h3>Winter Readiness Check · Fall</h3>
+        <p>Battery load test, coolant freeze point, wipers and washer fluid, tire tread, all exterior lights, heater and defrost. Catch the dead-battery morning before it happens.</p>
+        <a class="more" data-book href="/book?service=diagnostic">Book a winter check →</a>
+      </div>
+      <div class="card">
+        <h3>Maintenance Club</h3>
+        <p>Two synthetic oil changes, two rotations, two inspections and 10% off repairs for one yearly price.</p>
+        <a class="more" href="/maintenance-club">See the club →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="voucher">
+  <div class="container" style="max-width:640px">
+    <h2>Get the first-visit coupon by text</h2>
+    <form class="form" data-form="first-visit-coupon" data-success="Sent! Check your phone for your coupon.">
+      <div class="row">
+        <div><label for="s-name">First name</label><input id="s-name" name="name" required autocomplete="given-name"></div>
+        <div><label for="s-phone">Mobile number</label><input id="s-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel"></div>
+      </div>
+      <div><label for="s-vehicle">Vehicle <span class="muted">(optional)</span></label><input id="s-vehicle" name="vehicle" placeholder="2015 Toyota Tacoma"></div>
+      <label class="consent"><input type="checkbox" name="sms_consent" value="yes" required> <span>I agree to receive my coupon and occasional service reminders by automated text from Harold's Quality Auto Repair at the number provided. Consent is not a condition of purchase. About 2 msgs/month. Msg &amp; data rates may apply. Reply STOP to cancel, HELP for help. <a href="/privacy">Privacy &amp; SMS Terms</a>.</span></label>
+      <div data-status class="notice hidden" role="status"></div>
+      <button class="btn btn-primary btn-lg" type="submit">Text me the coupon</button>
+    </form>
+  </div>
+</section>
